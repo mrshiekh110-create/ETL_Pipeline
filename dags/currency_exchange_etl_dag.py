@@ -13,20 +13,25 @@ Tasks:
 Airflow Named XCom is used for transferring data between tasks.
 """
 
-from datetime import datetime, timezone, timedelta
 import logging
 import os
+from datetime import UTC, datetime, timedelta
+
+import pymongo
 import requests
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-import pymongo
+
+try:
+    from airflow.providers.standard.operators.python import PythonOperator
+except ImportError:
+    from airflow.operators.python import PythonOperator
 
 logger = logging.getLogger("airflow.task")
 
 # Configuration constants
 API_URL = "https://api.frankfurter.dev/v2/rates?base=EUR&quotes=USD,GBP,JPY"
 MONGO_HOST = os.getenv("MONGO_HOST", "mongodb")
-MONGO_PORT = int(os.getenv("MONGO_PORT", 27017))
+MONGO_PORT = int(os.getenv("MONGO_PORT", "27017"))
 MONGO_USER = os.getenv("MONGO_USER", "admin")
 MONGO_PASSWORD = os.getenv("MONGO_PASSWORD", "password123")
 MONGO_DB_NAME = os.getenv("MONGO_DB", "currency_exchange")
@@ -81,7 +86,7 @@ def transform_exchange_rate_data(ti, **kwargs):
     if not raw_data:
         raise ValueError("No raw currency data received from extract task")
 
-    retrieved_at_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
+    retrieved_at_iso = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%S")
     transformed_records = []
 
     # Handle list of rate objects returned by Frankfurter v2 API
