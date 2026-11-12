@@ -22,8 +22,8 @@ The pipeline consists of three sequential tasks communicating strictly via **Air
 
 1. **Clone the repository:**
    ```bash
-   git clone <REPO_URL>
-   cd "task 3 pipeline"
+   git clone https://github.com/mrshiekh110-create/ETL_Pipeline.git
+   cd ETL_Pipeline
    ```
 
 2. **Verify DAG integrity:**

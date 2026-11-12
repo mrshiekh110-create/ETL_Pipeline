@@ -236,3 +236,4 @@ DagRun Finished: dag_id=currency_exchange_etl_pipeline, state=success, duration=
 
 if __name__ == "__main__":
     generate_screenshots()
+

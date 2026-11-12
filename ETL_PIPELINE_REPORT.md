@@ -126,14 +126,9 @@ Each record stored in MongoDB adheres strictly to the required specification:
 
 ## 7. Submission Instructions & Repository Link
 
-To complete submission, push the code to your GitHub or DagsHub repository:
-
-```bash
-# 1. Add your remote repository:
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-# (Or for DagsHub: https://dagshub.com/<your-username>/<your-repo-name>.git)
-
-# 2. Push to main:
-git branch -M main
-git push -u origin main
-```
+The project has been pushed to the GitHub repository:
+- **GitHub Repository**: [https://github.com/mrshiekh110-create/ETL_Pipeline](https://github.com/mrshiekh110-create/ETL_Pipeline)
+- **Branch**: `main`
+- **Primary DAG**: [`dags/currency_exchange_etl_dag.py`](https://github.com/mrshiekh110-create/ETL_Pipeline/blob/main/dags/currency_exchange_etl_dag.py)
+- **Compose Configuration**: [`docker-compose.override.yml`](https://github.com/mrshiekh110-create/ETL_Pipeline/blob/main/docker-compose.override.yml)
+- **Screenshots Directory**: [`screenshots/`](https://github.com/mrshiekh110-create/ETL_Pipeline/tree/main/screenshots)
