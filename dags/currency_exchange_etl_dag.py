@@ -13,10 +13,9 @@ Tasks:
 Airflow Named XCom is used for transferring data between tasks.
 """
 
+from datetime import UTC, datetime, timedelta
 import logging
 import os
-from datetime import UTC, datetime, timedelta
-
 import pymongo
 import requests
 from airflow import DAG
